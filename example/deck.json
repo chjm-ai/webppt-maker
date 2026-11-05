@@ -1,0 +1,50 @@
+{
+  "title": "HTML 幻灯片设计包 · 五页通用示例",
+  "design": "../designs/gray-orbit/design.md",
+  "pages": [
+    {
+      "id": "cover",
+      "layout": "orb-cover",
+      "file": "pages/01-cover.html",
+      "title": "设计与内容，各有边界",
+      "purpose": "设计与内容，各有边界",
+      "relationship": "orb-cover"
+    },
+    {
+      "id": "relation",
+      "layout": "branch",
+      "file": "pages/02-relation.html",
+      "title": "制作关系图",
+      "purpose": "制作关系图",
+      "relationship": "branch"
+    },
+    {
+      "id": "evidence",
+      "layout": "evidence",
+      "file": "pages/03-evidence.html",
+      "title": "示意图主导页",
+      "purpose": "示意图主导页",
+      "relationship": "evidence"
+    },
+    {
+      "id": "checkpoint",
+      "layout": "checkpoint",
+      "file": "pages/04-checkpoint.html",
+      "title": "交付前核对",
+      "purpose": "交付前核对",
+      "relationship": "checkpoint"
+    },
+    {
+      "id": "verdict",
+      "layout": "verdict",
+      "file": "pages/05-verdict.html",
+      "title": "检查与判断的边界",
+      "purpose": "检查与判断的边界",
+      "relationship": "verdict"
+    }
+  ],
+  "source": {
+    "type": "synthetic-demo",
+    "scope": "本地自绘示意图与虚构流程，不包含实际产品／客户研究资料"
+  }
+}

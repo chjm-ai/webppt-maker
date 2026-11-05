@@ -1,0 +1,33 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { background: #0e1115; color: #e7e9ed; }
+button, select { font: inherit; }
+.deck { min-height: calc(100dvh - 58px); display: grid; place-items: center; padding: 16px; }
+.deck-page { display: none; width: min(100%, calc((100dvh - 90px) * 16 / 9)); }
+.deck-page.active { display: block; }
+.frame { width: 100%; aspect-ratio: 16 / 9; container-type: inline-size; overflow: hidden; position: relative; }
+.player-controls { height: 58px; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px 12px; font: 12px/1.4 'PingFang SC', sans-serif; }
+.player-controls button, .player-controls select { background: #20262d; border: 1px solid #3a434f; color: #e7e9ed; border-radius: 6px; padding: 7px 10px; }
+.player-controls select { min-width: 0; max-width: min(27vw, 240px); text-overflow: ellipsis; }
+.player-controls button:disabled { opacity: .35; }
+.player-controls button:not(:disabled) { cursor: pointer; }
+.player-controls :focus-visible { outline: 2px solid #d9e0ea; outline-offset: 3px; }
+.player-status { min-width: 40px; text-align: center; }
+.player-message { position: fixed; bottom: 64px; left: 50%; transform: translateX(-50%); background: #20262d; padding: 10px 16px; border-radius: 8px; font: 13px sans-serif; }
+.player-message:empty { display: none; }
+body.overview .deck { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; gap: 20px; }
+body.overview .deck-page { display: block; width: 100%; cursor: pointer; }
+body.overview .player-controls { position: sticky; bottom: 0; background: #0e1115; }
+@media (max-width: 700px) {
+  .deck { padding: 8px; }
+  .deck-page { width: min(100%, calc((100dvh - 74px) * 16 / 9)); }
+  .player-controls { gap: 6px; }
+  .player-controls button, .player-controls select { padding: 7px; }
+  body.overview .deck { grid-template-columns: 1fr; }
+}
+@media print {
+  .deck { display: block; padding: 0; }
+  .deck-page { display: block; width: 100%; break-after: page; }
+  .player-controls, .player-message { display: none; }
+  @page { size: 320mm 180mm; margin: 0; }
+}

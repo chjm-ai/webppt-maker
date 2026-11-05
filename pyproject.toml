@@ -1,0 +1,9 @@
+[project]
+name = "html-ppt-design-pack"
+version = "0.2.0"
+description = "可替换设计的离线 HTML 幻灯片 Skill"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["playwright==1.57.0", "pillow>=11,<13"]

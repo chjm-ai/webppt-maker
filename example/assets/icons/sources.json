@@ -1,0 +1,56 @@
+{
+  "library": "Lucide",
+  "license_url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/LICENSE",
+  "icons": [
+    {
+      "name": "audio-lines",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/audio-lines.svg",
+      "sha256": "3942b8a5d6bccc927a55f857f0d44b90e2663470cd2d569000c9b60c37578dfa"
+    },
+    {
+      "name": "messages-square",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/messages-square.svg",
+      "sha256": "97733c58b74f8beddd569927f8453c86bca4afa394e6aad606db1acff4bd8355"
+    },
+    {
+      "name": "sliders-horizontal",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/sliders-horizontal.svg",
+      "sha256": "e43a00e5eb684e6cbb61083bed2528d7a3fa5f265693eb2b5f314cd432aa65f4"
+    },
+    {
+      "name": "message-circle",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/message-circle.svg",
+      "sha256": "146f39740fe50844394d56ae1f8821937655bcfff3842bf6fe8ffc0bcd324076"
+    },
+    {
+      "name": "package",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/package.svg",
+      "sha256": "69d6bc7650d26c4d24dd55eb22791607b982ce7637073944c256f1f61575509d"
+    },
+    {
+      "name": "bell",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/bell.svg",
+      "sha256": "394889e9631fe3a9a63be9a479a95b451b708e432d895978d21d9130b5ee5dbe"
+    },
+    {
+      "name": "copy",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/copy.svg",
+      "sha256": "ea80e566c7a12628a447cb53179b19aea4f60b9143e2becd0d0f20bf260e5718"
+    },
+    {
+      "name": "check-check",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/check-check.svg",
+      "sha256": "2b08c34edf3177ef80d523ad4ec3ebbd9efb92c581a48b6765044464e7e373f9"
+    },
+    {
+      "name": "shield-check",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/shield-check.svg",
+      "sha256": "8d4fcdbde5bba4abb1a2f6fe53e37ceb6343a1d5449a9d88f6f97c1971d26c4e"
+    },
+    {
+      "name": "rotate-ccw",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/rotate-ccw.svg",
+      "sha256": "622685386ab4017eabfde01cd74550a20b1924df233b353f73b6b155371f2afd"
+    }
+  ]
+}
