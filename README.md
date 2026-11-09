@@ -1,16 +1,30 @@
-# HTML PPT Design Pack
+# Deckloom
 
 制作离线 HTML 幻灯片的独立 Skill。内容、可替换设计规范与播放器分层；支持球形封面、关系图、截图主导页、核对流程和结论页。
 
 ## 使用
 
-本目录位于 AI_Skills 下，可通过 SKILL.md 加载；旧 html-ppt 技能保持独立。
+本目录位于 AI_Skills 下，可通过 SKILL.md 加载；已整合原 html-ppt 的改字、演讲备注和保存版本能力，不再需要旧技能。
 
 ```bash
 python3 scripts/build.py --out output/demo.html
 ```
 
-打开生成的 HTML 即可离线播放；方向键翻页，O 总览，F 全屏。示例为虚构的“HTML 幻灯片制作流程”，没有真实公司／客户材料。
+打开生成的 HTML 即可离线播放。示例为虚构的“HTML 幻灯片制作流程”，没有真实公司／客户材料。
+
+| 操作 | 按钮／快捷键 |
+|---|---|
+| 翻页、总览、全屏 | 方向键、O、F；手机横向滑动 |
+| 改字 | “改字”／E 启用，点击文字编辑；Esc 退出 |
+| 当前页演讲备注 | “备注”／N；切页自动切换，可在演讲者窗口查看 |
+| 独立演讲者窗口 | “演讲者”／S；显示当前标题、讲稿与下一页标题，可控制翻页 |
+| 保存新 HTML | “保存版本”／Ctrl 或 Cmd+S；保留正文和逐页备注 |
+
+- 默认只读，避免演讲时误改。编辑时不响应文字内的翻页快捷键，暂停滑动翻页；Esc 后点页面空白再使用播放快捷键。总览自动结束改字。
+- 标题、段落、列表、表格文字及文字 span 可编辑；自定义文字容器加 `data-editable`，不想被改的区域加 `data-no-edit`。图片、SVG、交互控件不进入文字编辑。纯文字编辑不保证保留被整体替换的行内强调样式；改成长文后仍需检查溢出。
+- `deck.json` 每页可加字符串 `notes` 作为初始讲稿；缺省为空。备注按页面保存，作为纯文字处理。演讲者窗口需允许弹窗。
+- 保存会下载新的自包含 HTML，不覆盖原文件；重开默认第一页、退出编辑／总览、收起备注。可以再次编辑、再次保存；不维护独立版本历史列表。
+- 改动仅在当前浏览器内，必须确认下载完成后再关闭。下载文件包含全部备注，分享前检查是否有内部信息。不会回写源页面、deck.json 或上传服务器。
 
 ```bash
 # 临时覆盖设计参数；输出文件必须尚不存在
@@ -23,6 +37,8 @@ python3 -m unittest discover -s tests -v
 uv sync --extra dev
 uv run playwright install chromium
 uv run python scripts/check_browser.py
+# 改字、备注、演讲者、多次保存重开与手机控件回归
+uv run python scripts/check_editing.py
 ```
 
 浏览器验收默认检查 output/demo.html；可传 `--html /绝对路径/另一份五页.html --scratch /截图目录`。截图默认进入系统临时目录。生成输出不提交 Git。

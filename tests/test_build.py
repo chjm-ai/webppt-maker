@@ -34,10 +34,29 @@ class BuildTests(unittest.TestCase):
     def test_build_inlines_five_slides_and_license(self):
         build.build(self.args)
         html = self.args.out.read_text()
-        self.assertEqual(html.count('<section class="deck-page">'), 5)
+        self.assertEqual(html.count('<section class="deck-page"'), 5)
         self.assertIn('data:image/svg+xml;base64,', html)
         self.assertIn('Lucide Icons and Contributors', html)
         self.assertNotIn('src="assets/', html)
+
+    def test_notes_are_escaped_and_controls_are_included(self):
+        self.update_manifest(lambda m: m['pages'][0].update(notes='讲稿 "<&>\n</textarea><script>alert(1)</script>'))
+        build.build(self.args)
+        markup = self.args.out.read_text()
+        self.assertIn('data-note="讲稿 &quot;&lt;&amp;&gt;', markup)
+        self.assertIn('&lt;/textarea&gt;&lt;script&gt;alert(1)&lt;/script&gt;', markup)
+        for name in ['edit', 'notes', 'note-text', 'save', 'presenter']:
+            self.assertIn(f'id="{name}"', markup)
+
+    def test_non_text_notes_are_rejected(self):
+        self.update_manifest(lambda m: m['pages'][0].update(notes={'invalid': True}))
+        with self.assertRaisesRegex(ValueError, '演讲备注必须是文字'):
+            build.build(self.args)
+
+    def test_notes_are_optional(self):
+        self.update_manifest(lambda m: [p.pop('notes', None) for p in m['pages']])
+        build.build(self.args)
+        self.assertEqual(self.args.out.read_text().count('data-note=""'), 5)
 
     def test_existing_output_is_not_overwritten(self):
         self.args.out.write_text('原文件')

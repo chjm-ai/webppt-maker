@@ -84,7 +84,7 @@ wheels = [
 ]
 
 [[package]]
-name = "html-ppt-design-pack"
+name = "deckloom"
 version = "0.2.0"
 source = { virtual = "." }
 

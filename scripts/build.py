@@ -70,7 +70,11 @@ def render_pages(manifest, content_dir):
         for attribute, expected in [('data-slide-id', item['id']), ('data-layout', item['layout'])]:
             if f'{attribute}="{expected}"' not in markup:
                 raise ValueError(f'{item["file"]} 的 {attribute} 与清单不一致')
-        pages.append('<section class="deck-page"><div class="frame">' + inline_images(markup, content_dir) + '</div></section>')
+        notes = item.get('notes', '')
+        if not isinstance(notes, str):
+            raise ValueError('演讲备注必须是文字：' + item['id'])
+        pages.append('<section class="deck-page" data-note="' + html.escape(notes, quote=True)
+                     + '"><div class="frame">' + inline_images(markup, content_dir) + '</div></section>')
     if not pages:
         raise ValueError('至少需要一页内容')
     return '\n'.join(pages)
@@ -88,7 +92,15 @@ def make_html(title, styles, pages, script):
 <button id="next" aria-label="下一页">→</button>
 <span id="status" class="player-status" aria-live="polite"></span>
 <button id="overview" aria-pressed="false">总览</button>
-<button id="fullscreen">全屏</button></nav>
+<button id="fullscreen">全屏</button>
+<button id="edit" aria-pressed="false">改字</button>
+<button id="notes" aria-expanded="false" aria-controls="notes-panel">备注</button>
+<button id="presenter">演讲者</button>
+<button id="save">保存版本</button></nav>
+<aside id="notes-panel" class="notes-panel" aria-label="演讲备注" hidden>
+<label for="note-text">当前页备注（保存版本时一并保留）</label>
+<textarea id="note-text" rows="5" placeholder="输入这一页的演讲备注"></textarea>
+<button id="close-notes">关闭备注</button></aside>
 <div id="message" class="player-message" role="status"></div>
 <script>{script}</script></body></html>'''
 

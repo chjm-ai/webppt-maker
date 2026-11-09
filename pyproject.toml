@@ -1,5 +1,5 @@
 [project]
-name = "html-ppt-design-pack"
+name = "deckloom"
 version = "0.2.0"
 description = "可替换设计的离线 HTML 幻灯片 Skill"
 requires-python = ">=3.11"

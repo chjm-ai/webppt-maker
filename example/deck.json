@@ -7,6 +7,7 @@
       "layout": "orb-cover",
       "file": "pages/01-cover.html",
       "title": "设计与内容，各有边界",
+      "notes": "先说明内容、设计与播放器的分层。这是虚构流程示例，不是业务产品。",
       "purpose": "设计与内容，各有边界",
       "relationship": "orb-cover"
     },
