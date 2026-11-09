@@ -21,7 +21,7 @@
 - 页面 ID、data-layout 与 deck.json 保持一致。
 - design.md 自然语言由制作者执行；构建器只读取 JSON，不声称自动审美评分。
 - 页面图片只能引用内容目录内的文件，离线输出全部内嵌。
-- 图标用本地 Lucide，逐件来源与哈希在 example/assets/icons/sources.json；编译后保留许可。
+- 图标按 references/icons.md 选库；assets/icons/ 附带 Lucide／Phosphor 精选 SVG，scripts/icons.py 离线检索与复制。逐件来源与哈希随库保存；内嵌须保留 metadata 中的完整许可，不混库。旧示例仍用 example/assets/icons/。
 - 五页至少四种主体构图；无图页先识别内容关系再绘图。
 - 真实资料、客户截图、个人路径、生成输出不提交到本仓库；示例明确标注为虚构。
 - 修改在工作分支／worktree 完成，验证后合并 main；不自动公开发布演示。

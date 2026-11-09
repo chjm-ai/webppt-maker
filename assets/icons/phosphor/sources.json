@@ -1,0 +1,179 @@
+{
+  "library": "phosphor",
+  "repository": "https://github.com/phosphor-icons/core",
+  "revision": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+  "variant": "regular",
+  "license_url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/LICENSE",
+  "license_sha256": "b5b1f1da112d18ea2147decfd48ddc1bf2b5aeb6c265381579340e95b15a2bb2",
+  "modification": "SVG metadata内加入完整来源与许可；几何未改动",
+  "icons": [
+    {
+      "name": "envelope",
+      "keywords": "邮件 询盘 输入",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/envelope.svg",
+      "upstream_sha256": "1cacf2964607ad27bcb6c55117e5c7275cfb3c206f799b720f095b63965efdc4",
+      "sha256": "b48fade703f547a77c304406e59945f4de5ec53c9810e17f4c04e7c238022a4a"
+    },
+    {
+      "name": "file-text",
+      "keywords": "文档 草稿 资料",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/file-text.svg",
+      "upstream_sha256": "9a580a038cce9f6dd223597864abe1b5c5c03bf8176d2f7171574598468b16f7",
+      "sha256": "2bf8dd62b952e3807dd9cdb286d5f5d7825391425c475c925e9f9d9dc291972b"
+    },
+    {
+      "name": "paperclip",
+      "keywords": "附件",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/paperclip.svg",
+      "upstream_sha256": "b60210f558fb4693a083ed563af191709a7cafcbc8fb0d1d083db9ef9c2412ac",
+      "sha256": "924a0cc3903724446eb1b2ff48a29ca3af6e22980af717a4397445eeb14c0d38"
+    },
+    {
+      "name": "robot",
+      "keywords": "AI 助手 整理",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/robot.svg",
+      "upstream_sha256": "defac7635fe4235e3b6c8a1edabca345ac9dc2e8a2ec79ec82088845562a8128",
+      "sha256": "4cae8c1a59dd3efc0b2652c0206eec67e152ff6cda39134617df6a2c57b80d0e"
+    },
+    {
+      "name": "user",
+      "keywords": "人工 人员",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/user.svg",
+      "upstream_sha256": "787434f7fef95f20e137d309d3c6b8b471548c55c9dfc137ae10625d70959d11",
+      "sha256": "5b6123545c81d02c04126dba3151993a10f9627c8463cd253f97c78a7790a395"
+    },
+    {
+      "name": "magnifying-glass",
+      "keywords": "搜索 检查 查找",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/magnifying-glass.svg",
+      "upstream_sha256": "f9fa2561978a9a3291e8ae0ebfcb651104f5069fade8f84871627bca68889cde",
+      "sha256": "254dcf6fd49ce246bc3e1e9da6a83d3c406497d440ecab3dc2a092ec62233b02"
+    },
+    {
+      "name": "question",
+      "keywords": "未知 缺项 问题",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/question.svg",
+      "upstream_sha256": "fd9a87cfce2abaa9113058be90e5281da58f665e2185974b80c7425d5c7fe2d6",
+      "sha256": "7d2ea32424846eff7e361c319456023abb36a06d9cae5782362593d2f805822a"
+    },
+    {
+      "name": "warning",
+      "keywords": "风险 警告",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/warning.svg",
+      "upstream_sha256": "047c8edbdfddb9f1692bbf56acc85b7e4649b567c60eb39470e98e4f9ddc6a2e",
+      "sha256": "8e737a599cb19ac1dbbc105ab6790ec8b752ff9067966a201e53abb3497725e0"
+    },
+    {
+      "name": "lock-key",
+      "keywords": "权限 锁定",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/lock-key.svg",
+      "upstream_sha256": "a8177687fb7b376afa1cf3bc0b16599c91b96a323687e2145f772b93ed0f2c95",
+      "sha256": "9e3671f748f564b980a2faf46ffd80a31cc0b88e51155212ea99c200a3f84b30"
+    },
+    {
+      "name": "key",
+      "keywords": "访问 授权 钥匙",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/key.svg",
+      "upstream_sha256": "61694102f24a2eb4ce68f337fb6bf81090aef219328cb10dc2bd3f3c9e2ea266",
+      "sha256": "5f68cedce321e2651e0d743a8b6901eef57e88f4d37799375f55e4f625354a95"
+    },
+    {
+      "name": "download-simple",
+      "keywords": "导出 下载",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/download-simple.svg",
+      "upstream_sha256": "c48678aa09b44ba4974954690ee6cc846379c448a7214f8c802604c2a1562014",
+      "sha256": "e2e3b4c2ac769875158e60bc0f5bbe878e5883da2627cde9663817fa151ad6bb"
+    },
+    {
+      "name": "folder-open",
+      "keywords": "资料库 文件夹",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/folder-open.svg",
+      "upstream_sha256": "9157518d00547242d3986c4fdaaf44a62ef056caf3ecee0c88137529947170ea",
+      "sha256": "ffd69d903bc5504654ff7007c67242d28f482d986ac49debb29fb45d75edf54f"
+    },
+    {
+      "name": "database",
+      "keywords": "数据 存储",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/database.svg",
+      "upstream_sha256": "da7d3598430cbe3b334c308c03ca41e8c4c7bbbfa7891e914d7aa8e87d847423",
+      "sha256": "c4899929bd178a73742ba07303939660e127c0f9e1be756cabfe15f511cfb3f1"
+    },
+    {
+      "name": "clock",
+      "keywords": "时间 交期",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/clock.svg",
+      "upstream_sha256": "b8c6c2899d2b9af48a55ba02ba6d7faf89b757915772dd24f5397f7b0d02aa5c",
+      "sha256": "bdb8dc768491d9c2b87b0e10c843ec224940e0988fedcd7f559d29532588d2c5"
+    },
+    {
+      "name": "package",
+      "keywords": "产品 货物",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/package.svg",
+      "upstream_sha256": "b190e7e8f5c6e68be08e9fca1310d0f2c341aa7f1384aa99457206fab755e1f6",
+      "sha256": "82e8ce92307a138b9dbb75c2fee6dda026a2c2f9534d9b2a84cf29a237292772"
+    },
+    {
+      "name": "paper-plane-tilt",
+      "keywords": "发送 对外",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/paper-plane-tilt.svg",
+      "upstream_sha256": "0dbff2ada31c963dfd95bfe2ab2cb39a90fe7100eb7c1724577444a1d8a7c26d",
+      "sha256": "ed115ef201e6b89076e5ba454a99df4ae0baeda5c8fd261a622396a0201e3979"
+    },
+    {
+      "name": "sun",
+      "keywords": "太阳 能量",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/sun.svg",
+      "upstream_sha256": "8df1c7b747774f8b2c1fe353b1b785c74aac35bfa50f2ed7d8d9a85a4191b2ac",
+      "sha256": "67e70bf5246cd66fac4ea32d2f05b288ddfa307f407f1588c65e9de2d87a8418"
+    },
+    {
+      "name": "drop",
+      "keywords": "水 水滴",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/drop.svg",
+      "upstream_sha256": "2b5396d046ce74fc645c6064226dd4875cf5e98eb1c7372611bf069f1adbc5aa",
+      "sha256": "d9f46c0406588f4f2bc68743e708b4031aa5463d3234a6f301986e58c6dbbf81"
+    },
+    {
+      "name": "cloud",
+      "keywords": "云",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/cloud.svg",
+      "upstream_sha256": "a72f1f201500924d20a30d7190a3277e411ab526d5b71a6f6a91b0812a09c669",
+      "sha256": "ef7698ad7f8edbeb5566e153bc97847efe9fa7f0a52011cb923fdbcf2751ea0c"
+    },
+    {
+      "name": "cloud-rain",
+      "keywords": "降雨",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/cloud-rain.svg",
+      "upstream_sha256": "87b26b17df248c1863be81a1798933ccb5ad42b41afd2ffdef4a38c987588c5f",
+      "sha256": "2dc42e031f186311bde0797ecbdb0fdca4e7640f0fa7722be1def104d04543a6"
+    },
+    {
+      "name": "thermometer",
+      "keywords": "温度 冷却",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/thermometer.svg",
+      "upstream_sha256": "fbe42cf4910d02a41df98cd26044da36d706c347d4656b56ce343f67d2674cde",
+      "sha256": "a507589fcce0f055c83d2a864924b98caa9b50603de945fe6a4554fb3016847a"
+    },
+    {
+      "name": "plant",
+      "keywords": "植物 土壤",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/plant.svg",
+      "upstream_sha256": "1201f75dac2090de7327228c7413471488d9ecf70ccf438801f1f14796cf4eaa",
+      "sha256": "ac983f78b824726e9f52405828793a748ed9031e6c73db3db6a4201cccfb6eb6"
+    },
+    {
+      "name": "eye",
+      "keywords": "观察 可见",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/eye.svg",
+      "upstream_sha256": "91d39f20bf95e0f36c07bd79b83a85fe6ff4ca20e2759c4afee7419ef80403fe",
+      "sha256": "7a419d24a49b8345b6fc48d426284ff02ceaafcdca2a3d4e2bd658df4fa30ff4"
+    },
+    {
+      "name": "check-circle",
+      "keywords": "完成 已验证",
+      "url": "https://raw.githubusercontent.com/phosphor-icons/core/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/regular/check-circle.svg",
+      "upstream_sha256": "e02a080c3d1a758de5c5fd41abd913dec4cffbc70fe1e9637dbf7ce35f377055",
+      "sha256": "cd16fd1bda5725148abb915fedbedfeae047cfa7b1bba87fc42d1042b6cd7b93"
+    }
+  ]
+}

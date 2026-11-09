@@ -47,6 +47,9 @@ uv run python scripts/check_editing.py
 
 - `SKILL.md`：制作流程与输出契约。
 - `references/composition.md`：内容关系与整组构图检查。
+- `references/icons.md`：Lucide／Phosphor／Tabler 的选用场景、语义与误用检查。
+- `assets/icons/`：两套各24个本地精选图标、固定版本来源、哈希与完整许可。
+- `scripts/icons.py`：离线检索中文关键词并复制选定图标，不联网、不覆盖已有目录。
 - `designs/gray-orbit/design.md`：可替换视觉规范与 JSON tokens。
 - `designs/gray-orbit/layouts.css`：五种页型的布局。
 - `runtime/`：通用播放器与打印样式。
@@ -64,7 +67,8 @@ uv run python scripts/check_editing.py
 ## 来源与边界
 
 - 通用构建器、播放器与球形图形独立实现，没有直接复制第三方演示模板运行时。
-- 图标为 Lucide 本地 SVG；真实下载 URL、SHA-256 与完整许可随 `example/assets/icons/` 保存。编译 HTML 包含许可，无 CDN 依赖。
+- 默认 Lucide，教学／生活主题可整组选 Phosphor；Tabler 为按需候选，不混库。`assets/icons/` 保存精选 SVG、固定源码版本、原件与本地 SHA-256、完整许可；每份精选 SVG 的 metadata 已含许可，内嵌时保留。旧示例素材仍在 `example/assets/icons/`。无 CDN 依赖。
+- 示例：`python3 scripts/icons.py --library lucide --query 人工`；复制：`python3 scripts/icons.py --library lucide --names mail bot user-round --out /path/to/content/assets/icons`。输出目录必须尚不存在；全集没有的对象按 `references/icons.md` 从官方库补取。
 - 截图页为自绘虚构工作台，不表示实际软件功能。
 - 不含真实研究正文、客户截图、公司 Logo、个人绝对路径或旧验收回执。
 - Chromium 验收不等于所有浏览器、实体投影或视频播放均已验证。手机保持 16:9，不是长文阅读版。
