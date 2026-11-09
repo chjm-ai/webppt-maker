@@ -84,7 +84,7 @@ wheels = [
 ]
 
 [[package]]
-name = "deckloom"
+name = "webppt-maker"
 version = "0.2.0"
 source = { virtual = "." }
 

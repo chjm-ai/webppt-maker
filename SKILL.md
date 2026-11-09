@@ -1,5 +1,5 @@
 ---
-name: deckloom
+name: webppt-maker
 description: 根据本地资料制作高审美、离线可播放的 HTML 幻灯片；可替换设计与布局，支持改字、逐页演讲备注、演讲者窗口、保存新HTML版本、球形封面与关系图。
 ---
 
