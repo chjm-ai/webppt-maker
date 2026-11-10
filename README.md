@@ -72,7 +72,13 @@ uv run python scripts/check_editing.py
 
 ## 设计定制
 
-本次明确要求与 custom.json ＞ design.md ＞通用默认。小改覆盖 tokens；新品牌复制设计目录，同时维护自己的布局 CSS。只换颜色不算完整设计。
+本次明确要求与 custom.json ＞ design.md ＞通用默认。模板只含规范和素材，不限制构图；固定项／默认值／自由项见 `references/templates.md`。指定模板或品牌就读取，未指定先问，也允许不使用模板。
+
+- `designs/d-dark/`：D Dark 公共无品牌示例，分层蓝色、深底、标题区斜纹；CSS只提供视觉角色。
+- `data/templates/<name>/`：私有模板及素材，现有 `data/` 忽略规则保护；本地可能有 Deepleaper Dark，不随仓库分发。
+- `designs/gray-orbit/`：保留给既有五页示例与历史清单，不作为新制作的静默默认。
+
+小改覆盖 tokens；项目新增构图 CSS 放自己的内容工程，不回写模板。新建或从满意成品提炼模板时，只保存可迁移规范与获准素材，不收录业务页。构建器接受任意模板 `design.md` 路径，素材先复制到内容目录再内嵌。
 
 自然语言视觉与语义规则由制作者执行；构建器只解析 JSON、校验基础契约并合成文件，不会自动判断审美或事实。五页至少四种主体构图，无图页先判断步骤、分支、层级或对照关系。
 
