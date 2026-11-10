@@ -42,6 +42,20 @@ class TemplateTests(unittest.TestCase):
             self.assertIn('--header-height: 17cqw;', css)
             self.assertIn('--cover-leading: 1.11;', css)
 
+    def test_header_spacing_defaults_and_customization(self):
+        config = build.load_design(ROOT / 'designs/d-dark/design.md')
+        expected = {'heading-top': '3.1cqw', 'subtitle-top': '8.1cqw',
+                    'header-height': '12.4cqw', 'body-top': '16.4cqw'}
+        for key, value in expected.items():
+            self.assertEqual(config['tokens'][key], value)
+        with tempfile.TemporaryDirectory() as temp:
+            custom = Path(temp) / 'custom.json'
+            custom.write_text(json.dumps({'tokens': {
+                'subtitle-top': '12cqw', 'body-top': '21cqw'}}))
+            css = build.make_tokens(config, custom)
+            self.assertIn('--subtitle-top: 12cqw;', css)
+            self.assertIn('--body-top: 21cqw;', css)
+
     def test_legacy_design_remains_available(self):
         config = build.load_design(ROOT / 'designs/gray-orbit/design.md')
         self.assertEqual(config['name'], 'gray-orbit')

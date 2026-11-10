@@ -24,6 +24,12 @@
 .brand :is(img,svg), img.full-logo { width: var(--logo-width); height: var(--logo-height); object-fit: contain; }
 .slide-subtitle { color: var(--muted); margin-top: var(--section-gap) !important; }
 .content { margin-top: var(--section-gap); }
+/* 单行标题组的默认节奏；长文案在本次工程联动调整变量。 */
+.slide:not(.layout-cover) { padding-top: var(--heading-top); }
+.slide:not(.layout-cover) .slide-subtitle { position: absolute; top: var(--subtitle-top); left: var(--pad-x); right: var(--pad-x); margin-top: 0 !important; }
+.slide:not(.layout-cover):has(.slide-subtitle) .content { position: absolute; top: var(--body-top); left: var(--pad-x); right: var(--pad-x); margin-top: 0; }
+.slide:not(.layout-cover):not(:has(.slide-subtitle)) { --header-height: calc(var(--heading-top) + var(--title-size) * var(--title-leading) + var(--section-gap)); }
+.slide:not(.layout-cover):not(:has(.slide-subtitle)) .content { margin-top: calc(var(--section-gap) * 2); }
 .slide.layout-cover :is(h1,.cover-title) { font-size: var(--cover-size); font-weight: var(--cover-weight); line-height: var(--cover-leading); }
 .surface { background: var(--surface); border-radius: var(--card-radius); }
 .texture-card { background-image: var(--material-texture); }
