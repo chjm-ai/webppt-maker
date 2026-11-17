@@ -2,6 +2,41 @@
 
 制作离线 HTML 幻灯片的独立 Skill。内容、可替换设计规范与播放器分层；支持球形封面、关系图、截图主导页、核对流程和结论页。
 
+**技能入口：[SKILL.md](SKILL.md)**（标准文件名，大写）。README 面向安装者，SKILL.md 面向执行任务的 AI；安装时保留整个目录，不能只复制入口文件。
+
+## 安装
+
+支持 Skills CLI 的工具可执行：
+
+```bash
+npx skills add chjm-ai/webppt-maker
+```
+
+按提示选择目标工具与安装范围；仓库若仍为私有，需要有读取权限。安装后新开会话，在技能列表查找 `webppt-maker`；支持斜杠技能调用的客户端可用 `/webppt-maker`。
+
+### 使用共享技能目录
+
+如果多个工具已链接到同一个共享技能库，只在共享库安装一份，不重复安装到各工具目录。以下以 `~/Desktop/Repos/AI_Skills` 为例：
+
+```bash
+# 仅在目标目录不存在时执行，不覆盖已有安装
+git clone https://github.com/chjm-ai/webppt-maker.git ~/Desktop/Repos/AI_Skills/webppt-maker
+```
+
+若 `~/.claude/skills` 已链接到该共享库，Claude Code 会从 `~/.claude/skills/webppt-maker/SKILL.md` 读取。其他客户端需各自确认技能目录配置；本仓库不会自动创建或修复全局链接。
+
+更新已有安装前先确认 `git status` 干净，再在技能目录执行 `git pull --ff-only`；有本地修改就先处理，不强制覆盖。`data/templates/` 中被忽略的私有模板不会通过 Git 安装或恢复，需自行备份与同步。
+
+## 输出格式与限制
+
+| 格式 | 当前能力 |
+|---|---|
+| 离线 HTML | 主要交付；支持播放、改字、备注和另存新版本 |
+| PDF | 提供打印样式，可通过浏览器打印；需另行检查分页与字体 |
+| PowerPoint `.pptx` | **未内置导出**；需要另用 PowerPoint 制作／转换工具 |
+
+HTML 改字不等于 PowerPoint 原生对象编辑。截图装进 PPTX 只能保留画面，不能逐项改文字／图形；可编辑 PPTX 需要重新映射元素，不保证纹理、动画和排版无损。
+
 ## 分阶段使用
 
 同一个Skill支持三种入口，不另装大纲技能：
@@ -14,7 +49,7 @@
 
 ## 使用
 
-本目录位于 AI_Skills 下，可通过 SKILL.md 加载；已整合原 html-ppt 的改字、演讲备注和保存版本能力，不再需要旧技能。
+以下命令在本技能根目录执行（无论安装在哪个目录）。已整合原 html-ppt 的改字、演讲备注和保存版本能力，不再需要旧技能；自有作品使用独立内容目录，先用 `python3 scripts/build.py --help` 查看内容、设计与输出参数，不覆盖 `example/`。
 
 ```bash
 python3 scripts/build.py --out output/demo.html
