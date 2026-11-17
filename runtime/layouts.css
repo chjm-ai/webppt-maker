@@ -1,0 +1,99 @@
+/* 版式参考库：只负责结构，颜色与字体全部来自模板 token。
+   这里是按内容关系挑选、组合或改造的参考，不是必须逐页套用的清单。 */
+
+.ly-page { display: flex; flex-direction: column; gap: calc(var(--section-gap) * 1.2); min-height: 0; }
+.slide .content.ly-page { bottom: var(--pad-y); }
+.ly-note { margin-top: auto; padding-top: calc(var(--section-gap) * .6); color: var(--quiet); font-size: var(--small-size); line-height: 1.5; }
+.ly-arrow { flex: none; align-self: center; color: var(--accent-text); font-size: var(--heading-size); line-height: 1; }
+.ly-kicker { color: var(--quiet); font-size: var(--small-size); letter-spacing: .06em; }
+
+/* 泳道：并列几处触点，共用一个底座 */
+.ly-flow { display: flex; flex-direction: column; gap: calc(var(--section-gap) * 1.1); flex: 1; min-height: 0; }
+.ly-flow-grid { display: flex; align-items: stretch; gap: calc(var(--section-gap) * .7); flex: 1; min-height: 0; }
+.ly-step { flex: 1; display: flex; flex-direction: column; gap: calc(var(--section-gap) * .55); min-width: 0; }
+.ly-step::before { content: ''; border-top: var(--hairline) solid var(--accent-line); }
+.ly-step h3 { font-size: var(--heading-size); font-weight: 500; }
+.ly-desc { color: var(--muted); line-height: 1.5; }
+.ly-card { flex: 1; min-height: 0; background: var(--surface); border-radius: var(--card-radius); padding: calc(var(--section-gap) * .8); font-size: var(--body-size); line-height: 1.65; }
+.ly-card :is(p, li) + :is(p, li) { margin-top: .35cqw; }
+.ly-base { display: flex; align-items: center; justify-content: space-between; gap: var(--section-gap); background: var(--accent-surface); border-top: var(--hairline) solid var(--accent-line); padding: calc(var(--section-gap) * .75) calc(var(--section-gap) * 1.1); }
+.ly-base strong { font-size: var(--heading-size); font-weight: 500; }
+.ly-base span { color: var(--muted); font-size: var(--body-size); }
+
+/* 管线：一排步骤，下面是明细与产出 */
+.ly-pipe { display: flex; flex-direction: column; gap: calc(var(--section-gap) * 1.1); flex: 1; min-height: 0; }
+.ly-pipe-steps { display: flex; list-style: none; margin: 0; padding: 0; }
+.ly-pipe-steps li { position: relative; flex: 1; display: flex; flex-direction: column; gap: .35cqw; padding: .9cqw 1.2cqw 0 0; border-top: var(--hairline) solid var(--accent-line); }
+.ly-pipe-steps li::after { content: '→'; position: absolute; top: .6cqw; right: .5cqw; color: var(--accent-text); }
+.ly-pipe-steps li:last-child::after { content: ''; }
+.ly-pipe-steps small { color: var(--quiet); font-size: var(--small-size); }
+.ly-pipe-steps strong { font-size: var(--body-size); font-weight: 500; }
+.ly-pipe-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--section-gap) * .9); flex: 1; min-height: 0; }
+.ly-pipe-details.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.ly-pipe-card { display: flex; flex-direction: column; gap: .7cqw; background: var(--surface); border-radius: var(--card-radius); padding: calc(var(--section-gap) * .9); min-height: 0; }
+.ly-pipe-card h3 { font-size: var(--body-size); font-weight: 500; }
+.ly-pipe-card p { color: var(--muted); font-size: var(--body-size); line-height: 1.55; }
+.ly-pipe-outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: calc(var(--section-gap) * 1.4); }
+.ly-outcome { display: flex; align-items: baseline; gap: .8cqw; border-top: var(--hairline) solid var(--line); padding-top: .8cqw; }
+.ly-outcome strong { font-size: var(--heading-size); font-weight: 500; }
+.ly-outcome span { color: var(--muted); }
+
+/* 矩阵：行是问题，列是方案，一列可高亮 */
+.ly-matrix { width: 100%; border-collapse: collapse; font-size: var(--body-size); line-height: 1.45; }
+.ly-matrix :is(th, td) { padding: .95cqw 1.05cqw; text-align: left; vertical-align: top; border-bottom: var(--hairline) solid var(--line); }
+.ly-matrix thead th { font-size: var(--body-size); font-weight: 500; }
+.ly-matrix thead small { display: block; margin-top: .3cqw; color: var(--muted); font-size: var(--small-size); font-weight: 400; }
+.ly-matrix tbody th { font-weight: 400; }
+.ly-matrix td { color: var(--muted); }
+.ly-matrix .is-focus { background: var(--accent-surface); }
+.ly-matrix thead .is-focus { background: var(--accent); color: var(--accent-ink); }
+.ly-matrix thead .is-focus small { color: var(--accent-ink); opacity: .82; }
+.ly-matrix tfoot :is(th, td) { border-bottom: 0; padding-top: .9cqw; color: var(--quiet); font-size: var(--small-size); }
+.ly-legend { display: flex; gap: calc(var(--section-gap) * 1.4); color: var(--muted); font-size: var(--small-size); }
+
+/* 双轨：两条路并排，强调一条 */
+.ly-tracks { display: flex; flex-direction: column; gap: calc(var(--section-gap) * 1.3); flex: 1; justify-content: center; }
+.ly-track { display: flex; align-items: stretch; gap: calc(var(--section-gap) * .6); }
+.ly-track-label { flex: none; width: 13cqw; display: flex; flex-direction: column; justify-content: center; gap: .3cqw; }
+.ly-track-label strong { font-size: var(--body-size); font-weight: 500; }
+.ly-track-box { flex: 1; display: flex; align-items: center; background: var(--surface); border-radius: var(--card-radius); padding: 1.1cqw; min-height: 6.6cqw; }
+.ly-track.is-accent .ly-track-box { background: var(--accent-surface); border-top: var(--hairline) solid var(--accent-line); }
+
+/* 阶梯：逐层收窄的层级 */
+.ly-ladder { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--section-gap) * 2); flex: 1; min-height: 0; }
+.ly-ladder-zone { display: flex; flex-direction: column; gap: calc(var(--section-gap) * .7); min-height: 0; }
+.ly-ladder-zone h3 { font-size: var(--heading-size); font-weight: 500; }
+.ly-ladder-zone > p { color: var(--muted); }
+.ly-ladder-stack { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: .55cqw; min-height: 0; }
+.ly-ladder-bar { margin: 0 auto; width: 100%; background: var(--surface); padding: 1.05cqw 1cqw; text-align: center; font-size: var(--body-size); }
+.ly-ladder-bar.w-88 { width: 88%; }
+.ly-ladder-bar.w-74 { width: 74%; }
+.ly-ladder-bar.w-60 { width: 60%; }
+.ly-ladder-bar.is-accent { background: var(--accent); color: var(--accent-ink); }
+
+/* 阶梯左侧的散点卡片 */
+.ly-ladder-list { display: flex; flex-direction: column; justify-content: center; gap: .7cqw; flex: 1; min-height: 0; }
+.ly-ladder-list .ly-card { flex: none; min-height: 0; }
+
+/* 双路验证：两条并行路径，底部共同关卡 */
+.ly-paths { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--section-gap) * 2); flex: 1; min-height: 0; }
+.ly-path { display: flex; flex-direction: column; }
+.ly-path h3 { display: flex; align-items: center; gap: .7cqw; font-size: var(--heading-size); font-weight: 500; }
+.ly-path-list { display: flex; flex-direction: column; margin-top: calc(var(--section-gap) * .6); }
+.ly-path-item { display: grid; grid-template-columns: 3.4cqw 1fr; gap: .8cqw; align-items: baseline; padding: 1.05cqw 0; border-bottom: var(--hairline) solid var(--line); }
+.ly-path-item span:first-child { color: var(--accent-text); }
+.ly-gate { border-left: .35cqw solid var(--accent); background: var(--accent-surface); padding: calc(var(--section-gap) * .8) calc(var(--section-gap) * 1.1); }
+.ly-gate strong { font-size: var(--body-size); font-weight: 500; }
+.ly-gate span { color: var(--muted); }
+
+/* 来源与范围：左边输入清单，右边分组范围 */
+.ly-sources { display: grid; grid-template-columns: 1.05fr 1fr; gap: calc(var(--section-gap) * 2); flex: 1; min-height: 0; }
+.ly-sources-list { display: flex; flex-direction: column; justify-content: flex-start; }
+.ly-source { display: flex; flex-direction: column; gap: .35cqw; padding: 1.5cqw 0; border-bottom: var(--hairline) solid var(--line); }
+.ly-source:first-child { border-top: var(--hairline) solid var(--line); }
+.ly-source h3 { font-size: var(--heading-size); font-weight: 500; }
+.ly-source p { color: var(--muted); }
+.ly-sources-groups { display: flex; flex-direction: column; justify-content: flex-start; gap: calc(var(--section-gap) * .7); }
+.ly-group { background: var(--surface); border-left: .3cqw solid var(--accent-line); padding: 1.2cqw 1.3cqw; }
+.ly-group h3 { font-size: var(--body-size); font-weight: 500; }
+.ly-group p { margin-top: .35cqw !important; color: var(--muted); }

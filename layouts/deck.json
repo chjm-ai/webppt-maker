@@ -1,0 +1,48 @@
+{
+  "title": "版式参考 · 社区咖啡店会员运营",
+  "design": "../designs/d-dark/design.md",
+  "pages": [
+    {
+      "id": "flow",
+      "layout": "flow",
+      "file": "flow.html",
+      "title": "三处触点，共用一份会员档案"
+    },
+    {
+      "id": "pipeline",
+      "layout": "pipeline",
+      "file": "pipeline.html",
+      "title": "从注册到复购，五个环节都有记录"
+    },
+    {
+      "id": "matrix",
+      "layout": "matrix",
+      "file": "matrix.html",
+      "title": "三种做法，先看维护成本"
+    },
+    {
+      "id": "tracks",
+      "layout": "tracks",
+      "file": "tracks.html",
+      "title": "人工记录与系统记录"
+    },
+    {
+      "id": "ladder",
+      "layout": "ladder",
+      "file": "ladder.html",
+      "title": "顾客反馈往上传递时容易丢细节"
+    },
+    {
+      "id": "paths",
+      "layout": "paths",
+      "file": "paths.html",
+      "title": "两条路径验证同一套假设"
+    },
+    {
+      "id": "sources",
+      "layout": "sources",
+      "file": "sources.html",
+      "title": "输入决定范围"
+    }
+  ]
+}

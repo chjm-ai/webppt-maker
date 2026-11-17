@@ -10,6 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TOKEN_NAME = re.compile(r'^[a-z][a-z0-9-]*$')
+# 版式参考库对所有模板生效，模板必须提供它用到的全部 token
+SHARED_LAYOUT_CSS = ROOT / 'runtime' / 'layouts.css'
 
 
 class DesignError(ValueError):
@@ -40,7 +42,7 @@ def token_problems(tokens, css_text=''):
     if css_text:
         missing = sorted(required_tokens(css_text) - set(tokens))
         if missing:
-            problems.append('layouts.css 用到但 tokens 没定义：' + ', '.join(missing))
+            problems.append('样式文件用到但 tokens 没定义：' + ', '.join(missing))
     return problems
 
 
@@ -56,7 +58,8 @@ def load_design(path):
     css_path = (path.parent / css_name).resolve()
     if not css_path.is_file():
         raise DesignError(f'找不到样式文件：{css_name}')
-    problems = token_problems(config.get('tokens'), css_path.read_text(encoding='utf-8'))
+    css_text = css_path.read_text(encoding='utf-8') + '\n' + SHARED_LAYOUT_CSS.read_text(encoding='utf-8')
+    problems = token_problems(config.get('tokens'), css_text)
     if problems:
         raise DesignError('；'.join(problems))
     config['layout_css_path'] = str(css_path)
@@ -203,7 +206,12 @@ def build(args):
     tokens = make_tokens(config, args.custom)
     template_dirs = [Path(d) for d in config.get('asset_dirs', [])]
     layout_path = Path(config['layout_css_path'])
-    styles = '\n'.join([(ROOT / 'runtime/player.css').read_text(), tokens, layout_path.read_text()])
+    styles = '\n'.join([
+        (ROOT / 'runtime/player.css').read_text(),
+        tokens,
+        SHARED_LAYOUT_CSS.read_text(encoding='utf-8'),
+        layout_path.read_text(),
+    ])
     pages = render_pages(manifest, manifest_path.parent, config['name'], template_dirs)
     script = (ROOT / 'runtime/player.js').read_text()
     output = args.out.resolve()

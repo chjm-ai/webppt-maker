@@ -6,5 +6,6 @@ __pycache__/
 .venv/
 .DS_Store
 output/
+.tmp-build/
 data/
 *.zip

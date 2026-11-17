@@ -3,7 +3,7 @@ name: webppt-maker
 description: 当用户说“做一份网页PPT”“把大纲做成HTML演示”“先讨论汇报大纲”，或要修改已有HTML幻灯片、保存品牌模板时使用。支持纯文本叙事大纲、制作大纲、离线HTML设计制作、改字、讲稿和保存新版本；确认HTML后明确要求“导出PPT”时，按需导出可编辑PPTX与转换报告。不用于直接编辑已有PPTX，也不是任意网页无损转换工具。
 ---
 
-# HTML 幻灯片制作 · v2.7
+# HTML 幻灯片制作 · v2.8
 
 本文件是标准技能入口，文件名保持大写 `SKILL.md`，不另建小写副本。相对资源路径均以本文件所在目录为根；下列命令在该目录执行，从其他目录调用时使用脚本绝对路径。用户作品、页面和输出放在独立内容目录，不覆盖随附示例；构建参数先查 `python3 scripts/build.py --help`。
 
@@ -13,6 +13,7 @@ description: 当用户说“做一份网页PPT”“把大纲做成HTML演示”
 
 - 内容：`example/deck.json` 与独立页面片段，登记事实、来源、目的与稳定 ID。
 - 模板：规范＋素材，公共位于 `designs/<name>/`，私有位于被 Git 忽略的 `data/templates/<name>/`；`design.md` 含自然语言规则与 JSON tokens，基础 CSS 不限制页面构图。**每个模板目录自包含，规则、tokens、CSS、素材都写全**，新建时复制一个现成目录再改；任何模板保存后必须跑 `scripts/check_templates.py`。
+- 版式：`runtime/layouts.css` 提供可选的结构骨架，`layouts/` 是可复制的参考页，`references/layouts.md` 说明适用关系与常见误用。**版式只是参考，不是页面清单**：先按大纲判断内容关系，再决定用、改还是不用；没有合适的就自建。
 - 播放：`runtime/`，不把品牌视觉写进播放器。
 - 覆盖优先级：本次明确要求与 custom.json ＞ design.md ＞通用默认。
 - 不覆盖历史输出、不自动安装、不自动公开发布。
@@ -37,10 +38,10 @@ description: 当用户说“做一份网页PPT”“把大纲做成HTML演示”
 
 1. 核对已确认大纲、受众、目的、页数。读取 `references/making-templates.md`：指定模板／品牌就匹配使用；未指定先问实际可用模板，也允许不使用模板；已有成品小改沿用当前模板。读取选中模板的完整规范及所需素材，在 `plan.md` 区分固定项、可调默认值和自由构图，记录模板路径、tokens、图形语言及素材规则。全组共用视觉契约，不把封面主视觉或某页三栏写死；指定参考有冲突时先确认。
 2. 根据制作大纲，逐页完成 `references/composition.md` 的视觉转译表并存入 `plan.md`：主要结论、原文依据、关系、视觉编码、主视觉草图、删减／讲稿、限制。写清“位置／长度／连线让观众看懂什么”，不能只填“流程图”“三张卡片”。先比较两种表达并说明取舍，再写页面。
-3. 先看整组草图：有关系的正文页以信息图、数据图、证据图或对照为主体，不默认“标题＋段落／卡片”。五页争取四种适合内容的主体构图；相邻页避免同构，但不得为凑种类虚构关系。无可视化依据时用强文字／引用页并写明理由。
+3. 先看整组草图：有关系的正文页以信息图、数据图、证据图或对照为主体，不默认“标题＋段落／卡片”。可查阅 `references/layouts.md` 的参考页型，但先按大纲确定关系，再决定用、改还是不用；参考页型不是配额，也不要求逐页不同。相邻页避免同构，但不得为凑种类虚构关系。无可视化依据时用强文字／引用页并写明理由。
 4. 新整稿先制作封面、复杂关系页或产品界面页等有代表性的页面，确认后再铺全稿；用户已授权全流程直接交付时可自行检查后继续，既有成品局部修改不重复设关。封面主视觉从本次主题提取，不默认复用经纬球。抽象几何仅是视觉隐喻，不暗示真实产品架构／能力；标题与图形不得互相压住，静态状态也必须完整。
 5. 根据视觉转译表实现主体：先放比较、路径、比例、层级等关系骨架，再配短标签。框里装段落、列表改成连框、放大数字或贴图标，都不自动算可视化。箭头只表达来源支持的关系，数据尺度与缺失值诚实；细则见参考文件。
-6. 沿已有基础骨架修改，必要时增加所选设计的布局 CSS，视觉样式复用风格契约的 tokens；内容不适合示例页型时改布局，不把内容塞回五页样例。读取 `references/lines.md`：优先留白分组，不给每行、每卡片和每节点默认加分割线。截图完整 contain，保留证据边界；不用无关图库照片填空。
+6. 沿已有基础骨架修改，必要时增加所选设计的布局 CSS，视觉样式复用风格契约的 tokens；内容不适合参考页型时改布局或自建，不把内容塞回现成样例。读取 `references/lines.md`：优先留白分组，不给每行、每卡片和每节点默认加分割线。截图完整 contain，保留证据边界；不用无关图库照片填空。
 7. 草图阶段读取 `references/icons.md`，主动为对象、角色、输入／动作选语义图标，并写入视觉转译表；不要等用户逐个点名。默认 Lucide，教学／生活主题可整组选 Phosphor，缺专业对象再查 Tabler；用 `scripts/icons.py` 检索并复制本地素材，统一库、变体与同级尺寸。不设数量配额，不给未知状态加成功勾，不以图标替代关系骨架。保留 SVG metadata、来源哈希和完整许可，离线内嵌；不向外部服务上传业务资料。
 8. 写页面片段，每页一个 `<article class="slide layout-…" data-slide-id="…" data-layout="…">`；图标可内嵌 SVG，文字保持 HTML。登记 deck.json；本次小改用 custom.json。
 9. 构建新的输出名：`python3 scripts/build.py --out output/new.html`。换设计用 `--design`，临时覆盖用 `--custom`。构建只解析 design.md 的 JSON，不自动理解全部审美与语义规则。
@@ -55,6 +56,7 @@ description: 当用户说“做一份网页PPT”“把大纲做成HTML演示”
 - 未获授权的真实品牌资产留在 `data/templates/<name>/`，客户文案、截图与讲稿不进入公共示例。制作时的小改不自动改模板。
 - **保存后必须校验**：`python3 scripts/check_templates.py --template <目录>`。有错误就修正后重跑，**不得宣称模板已保存成功**。校验会拦重复定义、对比度不足、私有素材进 Git、公共页面引用私有素材等问题。
 - 校验通过后构建一页样稿并截图确认，再向用户报告位置、从哪个模板复制、校验结果；私有模板要提醒不会随 Git 同步。
+- 版式与模板分工：`runtime/layouts.css` 只写结构、只用 token，模板负责视觉；确认会跨项目复用的页型才进 `layouts/`，一次性的特殊构图留在内容工程。
 
 ## 改字、讲稿与版本
 
@@ -87,6 +89,12 @@ python3 scripts/export_pptx.py --html output/confirmed.html --out output/confirm
 ```sh
 python3 scripts/build.py --manifest example/deck.json --out output/demo.html
 python3 scripts/build.py --manifest example/deck.json --design designs/deepleaper-dark/design.md --out output/deepleaper-demo.html
+```
+
+**版式参考**在 `layouts/`，共七种结构页（泳道、管线、矩阵、双轨、阶梯、双路验证、来源与范围），内容全部虚构。它用于寻找构图灵感，不是必须逐页套用的清单，取舍说明见 `references/layouts.md`：
+
+```sh
+python3 scripts/build.py --manifest layouts/deck.json --out output/layouts.html
 ```
 
 `python3 scripts/check_browser.py` 运行示例的浏览器检查；`--html` 可指定其他输出，`--scratch` 指定截图目录。截图目视是必要步骤，程序检查不能证明信息表达和审美正确。

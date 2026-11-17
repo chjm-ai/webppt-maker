@@ -101,6 +101,18 @@ class BuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, '图片必须位于内容目录或模板目录内'):
             build.inline_images('<img src="../outside.svg">', content)
 
+    def test_layout_reference_deck_builds_for_each_template(self):
+        """版式参考页不绑定模板；共享结构 CSS 由构建器统一注入。"""
+        for design in ('d-dark', 'deepleaper-dark'):
+            out = self.root / f'layouts-{design}.html'
+            build.build(argparse.Namespace(
+                manifest=ROOT / 'layouts/deck.json',
+                design=ROOT / f'designs/{design}/design.md', custom=None, out=out))
+            html = out.read_text()
+            self.assertEqual(html.count('<section class="deck-page"'), 7)
+            self.assertIn('.ly-matrix', html)
+            self.assertNotIn('data-template-only', html)
+
 
 if __name__ == '__main__':
     unittest.main()

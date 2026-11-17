@@ -4,7 +4,8 @@
 
 ## 结构
 
-- runtime/：通用播放层，不写品牌布局。
+- runtime/：通用播放层与共享版式结构（layouts.css），不写品牌视觉。
+- layouts/：七种参考页型与可构建示例；只是构图参考，不是页面清单。
 - designs/<name>/：design.md 配置与独立布局 CSS。
 - example/：四页虚构示例；页面用 data-template-only 标记支持多套模板。
 - scripts/：标准库构建器、模板校验（check_templates.py）、图标检索、浏览器验收。

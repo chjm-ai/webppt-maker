@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build import token_problems  # noqa: E402  与构建器共用同一套 token 规则
+from build import SHARED_LAYOUT_CSS, token_problems  # noqa: E402  与构建器共用同一套 token 规则
 
 PUBLIC_DIR = ROOT / 'designs'
 PRIVATE_DIR = ROOT / 'data/templates'
@@ -94,6 +94,7 @@ def check_template(template_dir, public, report):
         report.error(name, f'缺少 layout_css：{css_name}')
     else:
         css_text = css_path.read_text(encoding='utf-8')
+    css_text += '\n' + SHARED_LAYOUT_CSS.read_text(encoding='utf-8')
     for problem in token_problems(tokens, css_text):
         report.error(name, problem)
     if not isinstance(tokens, dict):
@@ -131,7 +132,9 @@ def is_relative_to_public(path):
 
 def check_private_leak(template_dir, name, report):
     """公共模板与示例页面里不允许出现指向 data/ 私有目录的引用（按原文判断，不解析路径）。"""
-    targets = list(template_dir.rglob('*.html')) + list((ROOT / 'example').rglob('*.html'))
+    targets = (list(template_dir.rglob('*.html'))
+               + list((ROOT / 'example').rglob('*.html'))
+               + list((ROOT / 'layouts').rglob('*.html')))
     for page in targets:
         text = page.read_text(encoding='utf-8')
         for ref in IMAGE_REF.findall(text):

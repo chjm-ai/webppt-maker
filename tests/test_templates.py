@@ -172,6 +172,17 @@ class TemplateTests(unittest.TestCase):
         with self.assertRaisesRegex(build.DesignError, 'ink'):
             build.load_design(template / 'design.md')
 
+    def test_shared_layout_tokens_are_required(self):
+        """small-size 只被 runtime/layouts.css 使用，模板也必须提供，否则版式渲染缺值。"""
+        tokens = base_tokens()
+        del tokens['small-size']
+        template = self.make_template('zz-shared', tokens=tokens)
+        report = check.Report()
+        check.check_template(template, True, report)
+        self.assertIn('small-size', '\n'.join(report.errors))
+        with self.assertRaisesRegex(build.DesignError, 'small-size'):
+            build.load_design(template / 'design.md')
+
     def test_checker_rejects_extends(self):
         template = self.make_template('zz-ext', extra={'extends': '../d-dark/design.md'})
         report = check.Report()
