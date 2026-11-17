@@ -56,6 +56,30 @@ class TemplateTests(unittest.TestCase):
             self.assertIn('--subtitle-top: 12cqw;', css)
             self.assertIn('--body-top: 21cqw;', css)
 
+    def test_brand_example_is_self_contained(self):
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / 'brand.html'
+            build.build(argparse.Namespace(
+                manifest=ROOT / 'example/deepleaper/deck.json',
+                design=None, custom=None, out=out))
+            result = out.read_text(encoding='utf-8')
+            self.assertEqual(result.count('<article class="slide '), 3)
+            self.assertIn('data:image/png;base64,', result)
+            self.assertIn('虚构示例', result)
+            self.assertIn('--accent: #0a19ff;', result)
+            self.assertNotIn('src="assets/', result)
+            self.assertNotIn('/Users/', result)
+
+    def test_brand_uses_confirmed_dark_visual_language(self):
+        brand = build.load_design(ROOT / 'designs/deepleaper-dark/design.md')
+        generic = build.load_design(ROOT / 'designs/d-dark/design.md')
+        self.assertEqual(brand['name'], 'deepleaper-dark')
+        for key, value in generic['tokens'].items():
+            if key != 'logo-height':
+                self.assertEqual(brand['tokens'][key], value, key)
+        self.assertEqual((ROOT / 'designs/deepleaper-dark/layouts.css').read_text(),
+                         (ROOT / 'designs/d-dark/layouts.css').read_text())
+
     def test_legacy_design_remains_available(self):
         config = build.load_design(ROOT / 'designs/gray-orbit/design.md')
         self.assertEqual(config['name'], 'gray-orbit')

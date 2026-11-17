@@ -19,6 +19,7 @@ npx skills add chjm-ai/webppt-maker
 - “先帮我讨论一份产品介绍的大纲，暂时不要设计。”
 - “按已确认的大纲制作 10 页 HTML 演示，使用 D Dark 模板。”
 - “只修改第 3 页，保留其他页的内容和风格。”
+- “HTML 效果已确认，把这份保存后的文件导出为可编辑 PPT。”
 
 支持三个阶段：**叙事大纲 → 制作大纲 → 设计制作**。默认逐阶段确认；已有确认稿可直接进入对应阶段，也可明确要求全流程直接完成。
 
@@ -39,7 +40,8 @@ npx skills add chjm-ai/webppt-maker
 
 模板保存设计规范与素材，不固定每页构图。
 
-- `designs/d-dark/`：公共深色模板 D Dark。
+- `designs/d-dark/`：公共无品牌深色模板 D Dark。
+- `designs/deepleaper-dark/`：内置 Deepleaper 品牌规范与 Logo，含三页虚构示例 `example/deepleaper/`。
 - `designs/gray-orbit/`：随附五页示例使用的设计。
 - `data/templates/<name>/`：本地私有模板，可保存 Logo、字体和图片；已被 Git 忽略，需自行备份。
 
@@ -51,9 +53,19 @@ npx skills add chjm-ai/webppt-maker
 |---|---|
 | 离线 HTML | 主要交付，支持播放、改字、讲稿与保存 |
 | PDF | 可通过浏览器打印，需检查分页与字体 |
-| PowerPoint `.pptx` | 未内置导出，需另用制作或转换工具 |
+| PowerPoint `.pptx` | HTML 确认后按需导出；原生文字／基础形状＋局部图片，附转换报告 |
 
-HTML 编辑不等于 PowerPoint 原生对象编辑，也不保证转换后排版、纹理和动画无损。
+**先只做 HTML，明确要求导出时才生成 PPTX。** 支持本技能生成及保存后的自包含 HTML，不是任意网页无损转换。复杂纹理、Logo、SVG 等可局部图片化；字体不嵌入，动画、交互与讲稿不导出。交付前需在 PowerPoint 中逐页复核。
+
+导出环境单独选装，普通 HTML 构建不增加依赖：
+
+```bash
+uv sync --extra pptx
+uv run playwright install chromium
+uv run python scripts/export_pptx.py --html output/confirmed.html --out output/confirmed-editable.pptx
+```
+
+输出 `.pptx` 与同名 `.report.json`，均不覆盖已有文件。报告说明原生对象、局部图片及警告；详见 [导出边界与验收](references/pptx-export.md)。
 
 ## 本地构建与测试
 

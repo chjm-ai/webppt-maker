@@ -7,8 +7,8 @@
 - 用户指定模板名／品牌：从 `designs/*/design.md` 与 `data/templates/*/design.md` 的名称匹配并读取；只列目录及名称，不默认加载全部素材。重名、无匹配、品牌对应多个模板时询问，不猜测或静默退回默认。
 - 未指定：先列出实际可用模板供选择，并提供“不使用模板”；不在叙事大纲阶段为了做大纲先问配色。已有成品小改沿用其当前模板。
 - 不使用模板：为本次写独立风格契约，不自动保存成公共模板。
-- 公共通用模板放 `designs/<slug>/`；品牌私有模板及素材放 `data/templates/<slug>/`。后者由现有 `.gitignore` 的 `data/` 排除，不能为了构建方便把 Logo 复制到公共目录。
-- `D Dark` 是公共无品牌示例；`Deepleaper Dark` 仅在本机确有该私有模板时可用。历史 `gray-orbit` 是独立保留的兼容设计，旧清单不强制迁移。
+- 公共通用模板与明确获准分发的品牌示例放 `designs/<slug>/`；未获授权的品牌私有模板及素材放 `data/templates/<slug>/`。后者由现有 `.gitignore` 的 `data/` 排除，不能仅为构建方便把私有素材移入公共目录。
+- `D Dark` 是公共无品牌示例；`Deepleaper Dark` 是获准公开分发的品牌示例，位于 `designs/deepleaper-dark/`，附原始 PNG 与明确标注的透明白字派生 PNG，不宣称真矢量 SVG。用 `example/deepleaper/deck.json` 构建虚构演示。历史 `gray-orbit` 是独立保留的兼容设计，旧清单不强制迁移。
 
 ## 三层约束
 
