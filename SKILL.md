@@ -12,7 +12,7 @@ description: 当用户说“做一份网页PPT”“把大纲做成HTML演示”
 ## 分层契约
 
 - 内容：`example/deck.json` 与独立页面片段，登记事实、来源、目的与稳定 ID。
-- 模板：规范＋素材，公共位于 `designs/<name>/`，私有位于被 Git 忽略的 `data/templates/<name>/`；`design.md` 含自然语言规则与 JSON tokens，基础 CSS 不限制页面构图。
+- 模板：规范＋素材，公共位于 `designs/<name>/`，私有位于被 Git 忽略的 `data/templates/<name>/`；`design.md` 含自然语言规则与 JSON tokens，基础 CSS 不限制页面构图。**每个模板目录自包含，规则、tokens、CSS、素材都写全**，新建时复制一个现成目录再改；任何模板保存后必须跑 `scripts/check_templates.py`。
 - 播放：`runtime/`，不把品牌视觉写进播放器。
 - 覆盖优先级：本次明确要求与 custom.json ＞ design.md ＞通用默认。
 - 不覆盖历史输出、不自动安装、不自动公开发布。
@@ -35,7 +35,7 @@ description: 当用户说“做一份网页PPT”“把大纲做成HTML演示”
 
 ## C阶段制作顺序
 
-1. 核对已确认大纲、受众、目的、页数。读取 `references/templates.md`：指定模板／品牌就匹配使用；未指定先问实际可用模板，也允许不使用模板；已有成品小改沿用当前模板。读取选中模板的规范及所需素材，在 `plan.md` 区分固定项、可调默认值和自由构图，记录模板路径、tokens、图形语言及素材规则。全组共用视觉契约，不把封面主视觉或某页三栏写死；指定参考有冲突时先确认。
+1. 核对已确认大纲、受众、目的、页数。读取 `references/making-templates.md`：指定模板／品牌就匹配使用；未指定先问实际可用模板，也允许不使用模板；已有成品小改沿用当前模板。读取选中模板的完整规范及所需素材，在 `plan.md` 区分固定项、可调默认值和自由构图，记录模板路径、tokens、图形语言及素材规则。全组共用视觉契约，不把封面主视觉或某页三栏写死；指定参考有冲突时先确认。
 2. 根据制作大纲，逐页完成 `references/composition.md` 的视觉转译表并存入 `plan.md`：主要结论、原文依据、关系、视觉编码、主视觉草图、删减／讲稿、限制。写清“位置／长度／连线让观众看懂什么”，不能只填“流程图”“三张卡片”。先比较两种表达并说明取舍，再写页面。
 3. 先看整组草图：有关系的正文页以信息图、数据图、证据图或对照为主体，不默认“标题＋段落／卡片”。五页争取四种适合内容的主体构图；相邻页避免同构，但不得为凑种类虚构关系。无可视化依据时用强文字／引用页并写明理由。
 4. 新整稿先制作封面、复杂关系页或产品界面页等有代表性的页面，确认后再铺全稿；用户已授权全流程直接交付时可自行检查后继续，既有成品局部修改不重复设关。封面主视觉从本次主题提取，不默认复用经纬球。抽象几何仅是视觉隐喻，不暗示真实产品架构／能力；标题与图形不得互相压住，静态状态也必须完整。
@@ -49,7 +49,12 @@ description: 当用户说“做一份网页PPT”“把大纲做成HTML演示”
 
 ## 模板沉淀
 
-用户要求新建、提炼或更新模板时，按 `references/templates.md` 保存规范和素材，先区分固定／默认／自由项；公共模板可包含明确获准分发的品牌素材；内置 `designs/deepleaper-dark/` 是 Deepleaper 授权品牌示例，`designs/d-dark/` 保留为无品牌版本。其他未获授权的真实品牌资产留在 `data/templates/`，客户文案、截图与讲稿不进入公共示例。制作时的小改不自动改模板。
+用户要求新建、提炼或更新模板时，按 `references/making-templates.md` 逐步执行，先区分固定／默认／自由项。
+
+- **每个模板写全**：`designs/d-dark/` 是深色参考模板，`designs/deepleaper-dark/` 是它的完整快照（改 Logo 条款和 `logo-height`），两者互不依赖。新建模板一律 `cp -r` 一个现成目录再改，不写差异引用。
+- 未获授权的真实品牌资产留在 `data/templates/<name>/`，客户文案、截图与讲稿不进入公共示例。制作时的小改不自动改模板。
+- **保存后必须校验**：`python3 scripts/check_templates.py --template <目录>`。有错误就修正后重跑，**不得宣称模板已保存成功**。校验会拦重复定义、对比度不足、私有素材进 Git、公共页面引用私有素材等问题。
+- 校验通过后构建一页样稿并截图确认，再向用户报告位置、从哪个模板复制、校验结果；私有模板要提醒不会随 Git 同步。
 
 ## 改字、讲稿与版本
 
@@ -75,8 +80,15 @@ python3 scripts/export_pptx.py --html output/confirmed.html --out output/confirm
 
 ## 当前示例
 
-虚构的 HTML 幻灯片制作流程示例：球形主视觉封面 → 输入／规则／动作关系图 → 截图主导页 → 带人工核对关卡的流程 → 强文字证据结论。
+虚构的 HTML 幻灯片制作流程示例，共四页：品牌封面 → HTML／PPTX 关系图 → 转换边界 → 交付前核对流程。页面在 `example/pages/`，清单 `example/deck.json`。
 
-`python3 scripts/check_browser.py` 运行当前五页示例检查；`--html` 可指定其他五页输出，`--scratch` 指定截图目录。截图目视是必要步骤，程序检查不能证明信息表达和审美正确。
+**同一套页面支持两套模板**：默认 D Dark 无品牌版；指定 `--design designs/deepleaper-dark/design.md` 时换用品牌 Logo 与品牌主视觉，靠页面的 `data-template-only` 标记切换。
+
+```sh
+python3 scripts/build.py --manifest example/deck.json --out output/demo.html
+python3 scripts/build.py --manifest example/deck.json --design designs/deepleaper-dark/design.md --out output/deepleaper-demo.html
+```
+
+`python3 scripts/check_browser.py` 运行示例的浏览器检查；`--html` 可指定其他输出，`--scratch` 指定截图目录。截图目视是必要步骤，程序检查不能证明信息表达和审美正确。
 
 构建器仅依赖 Python 标准库；浏览器验收另需 Playwright、Chromium、Pillow。没有产品后台实测、实体投影或多浏览器验收时必须如实标明。

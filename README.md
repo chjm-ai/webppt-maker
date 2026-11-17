@@ -66,11 +66,11 @@ npx skills add chjm-ai/webppt-maker
 模板保存设计规范与素材，不固定每页构图。
 
 - `designs/d-dark/`：公共无品牌深色模板 D Dark。
-- `designs/deepleaper-dark/`：内置 Deepleaper 品牌规范与 Logo，含三页虚构示例 `example/deepleaper/`。
-- `designs/gray-orbit/`：随附五页示例使用的设计。
+- `designs/deepleaper-dark/`：Deepleaper 品牌示例，完整模板（D Dark 的快照 + Logo 条款）。
+- 每个模板自包含，新建时复制一个现成目录再改；保存后运行 `python3 scripts/check_templates.py` 自动体检，缺变量构建时也会直接报错。
 - `data/templates/<name>/`：本地私有模板，可保存 Logo、字体和图片；已被 Git 忽略，需自行备份。
 
-可指定模板、不使用模板，或从满意的成品中提炼新模板。单次作品修改不会自动回写模板。详见 [模板指南](references/templates.md)。
+可指定模板、不使用模板，或从满意的成品中提炼新模板。单次作品修改不会自动回写模板。详见 [制作模板指南](references/making-templates.md)。
 
 ## 输出格式
 
@@ -119,7 +119,7 @@ uv run python scripts/check_editing.py
 - `references/`：大纲、构图、模板、分割线和图标指南。
 - `designs/`：公共设计规范与样式。
 - `runtime/`：播放器与打印样式。
-- `example/`：五页虚构示例与素材。
+- `example/`：四页虚构示例；同一套页面可切换 D Dark 与品牌模板。
 - `assets/icons/`：精选 Lucide／Phosphor SVG，附来源及许可。
 - `docs/screenshots/`：README 效果预览，仅含通用示例文案。
 - `scripts/`、`tests/`、`evals/`：构建工具、自动测试与行为评测用例。

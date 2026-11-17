@@ -21,7 +21,7 @@ class BuildTests(unittest.TestCase):
         self.manifest = self.root / 'example/deck.json'
         self.args = argparse.Namespace(
             manifest=self.manifest,
-            design=ROOT / 'designs/gray-orbit/design.md',
+            design=ROOT / 'designs/d-dark/design.md',
             custom=None,
             out=self.root / 'demo.html',
         )
@@ -31,13 +31,12 @@ class BuildTests(unittest.TestCase):
         change(content)
         self.manifest.write_text(json.dumps(content))
 
-    def test_build_inlines_five_slides_and_license(self):
+    def test_build_inlines_all_slides(self):
         build.build(self.args)
         html = self.args.out.read_text()
-        self.assertEqual(html.count('<section class="deck-page"'), 5)
-        self.assertIn('data:image/svg+xml;base64,', html)
-        self.assertIn('Lucide Icons and Contributors', html)
+        self.assertEqual(html.count('<section class="deck-page"'), 4)
         self.assertNotIn('src="assets/', html)
+        self.assertNotIn('<img', html)
 
     def test_notes_are_escaped_and_controls_are_included(self):
         self.update_manifest(lambda m: m['pages'][0].update(notes='讲稿 "<&>\n</textarea><script>alert(1)</script>'))
@@ -56,7 +55,7 @@ class BuildTests(unittest.TestCase):
     def test_notes_are_optional(self):
         self.update_manifest(lambda m: [p.pop('notes', None) for p in m['pages']])
         build.build(self.args)
-        self.assertEqual(self.args.out.read_text().count('data-note=""'), 5)
+        self.assertEqual(self.args.out.read_text().count('data-note=""'), 4)
 
     def test_existing_output_is_not_overwritten(self):
         self.args.out.write_text('原文件')
@@ -81,10 +80,16 @@ class BuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, '重复页面 ID'):
             build.build(self.args)
 
+    def test_image_is_found_in_template_assets(self):
+        """页面只写文件名，构建器从模板 assets/ 取原件，不在内容目录留副本。"""
+        self.args.design = ROOT / 'designs/deepleaper-dark/design.md'
+        build.build(self.args)
+        self.assertIn('data:image/png;base64,', self.args.out.read_text())
+
     def test_missing_image_is_reported(self):
-        (self.root / 'example/assets/orb.svg').unlink()
-        with self.assertRaises(FileNotFoundError):
-            build.build(self.args)
+        content = self.root / 'example'
+        with self.assertRaisesRegex(FileNotFoundError, '找不到图片'):
+            build.inline_images('<img src="not-exists.png">', content, [])
 
     def test_empty_deck_is_rejected(self):
         self.update_manifest(lambda m: m.update(pages=[]))
@@ -93,7 +98,7 @@ class BuildTests(unittest.TestCase):
 
     def test_asset_cannot_escape_content_directory(self):
         content = self.root / 'example'
-        with self.assertRaisesRegex(ValueError, '图片必须位于内容目录内'):
+        with self.assertRaisesRegex(ValueError, '图片必须位于内容目录或模板目录内'):
             build.inline_images('<img src="../outside.svg">', content)
 
 

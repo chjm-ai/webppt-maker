@@ -4,7 +4,7 @@
 
 首次安装后出现 `Executable doesn't exist`，表示当前 Playwright 对应的 Chromium 尚未安装，不是页面失败。执行 README 的 `uv run playwright install chromium`；不要通过关闭证书校验或假报通过来跳过。
 
-本仓库将 Playwright 固定为已实际验证的 1.57.0，并提交 uv.lock。升级版本后重新安装对应 Chromium，再重新跑五页验收；机器上有其他版本的浏览器不代表当前版本能直接使用。
+本仓库将 Playwright 固定为已实际验证的 1.57.0，并提交 uv.lock。升级版本后重新安装对应 Chromium，再重新跑示例验收；机器上有其他版本的浏览器不代表当前版本能直接使用。
 
 ## 输出存在
 

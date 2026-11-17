@@ -1,51 +1,14 @@
 {
-  "title": "HTML 幻灯片设计包 · 五页通用示例",
-  "design": "../designs/gray-orbit/design.md",
+  "title": "HTML 幻灯片 · 四页通用示例",
+  "design": "../designs/d-dark/design.md",
   "pages": [
-    {
-      "id": "cover",
-      "layout": "orb-cover",
-      "file": "pages/01-cover.html",
-      "title": "设计与内容，各有边界",
-      "notes": "先说明内容、设计与播放器的分层。这是虚构流程示例，不是业务产品。",
-      "purpose": "设计与内容，各有边界",
-      "relationship": "orb-cover"
-    },
-    {
-      "id": "relation",
-      "layout": "branch",
-      "file": "pages/02-relation.html",
-      "title": "制作关系图",
-      "purpose": "制作关系图",
-      "relationship": "branch"
-    },
-    {
-      "id": "evidence",
-      "layout": "evidence",
-      "file": "pages/03-evidence.html",
-      "title": "示意图主导页",
-      "purpose": "示意图主导页",
-      "relationship": "evidence"
-    },
-    {
-      "id": "checkpoint",
-      "layout": "checkpoint",
-      "file": "pages/04-checkpoint.html",
-      "title": "交付前核对",
-      "purpose": "交付前核对",
-      "relationship": "checkpoint"
-    },
-    {
-      "id": "verdict",
-      "layout": "verdict",
-      "file": "pages/05-verdict.html",
-      "title": "检查与判断的边界",
-      "purpose": "检查与判断的边界",
-      "relationship": "verdict"
-    }
+    {"id": "cover", "layout": "cover", "file": "pages/01-cover.html", "title": "先确认画面，再交付可编辑稿", "notes": "虚构示例，不是业务成果。", "purpose": "说明制作流程与交付方式"},
+    {"id": "relation", "layout": "relation", "file": "pages/02-relation.html", "title": "确认 HTML 后，才进入 PPTX 导出"},
+    {"id": "boundary", "layout": "boundary", "file": "pages/03-boundary.html", "title": "保留编辑能力，也说明转换边界"},
+    {"id": "checkpoint", "layout": "checkpoint", "file": "pages/04-checkpoint.html", "title": "交付前核对，确认才算完成"}
   ],
   "source": {
     "type": "synthetic-demo",
-    "scope": "本地自绘示意图与虚构流程，不包含实际产品／客户研究资料"
+    "scope": "虚构流程示意，不含实际客户资料、业务数据或讲稿"
   }
 }

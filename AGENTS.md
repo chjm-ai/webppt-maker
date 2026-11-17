@@ -6,8 +6,8 @@
 
 - runtime/：通用播放层，不写品牌布局。
 - designs/<name>/：design.md 配置与独立布局 CSS。
-- example/：无真实业务资料的五页示例与本地 SVG。
-- scripts/：标准库构建器、球形生成器、浏览器验收。
+- example/：四页虚构示例；页面用 data-template-only 标记支持多套模板。
+- scripts/：标准库构建器、模板校验（check_templates.py）、图标检索、浏览器验收。
 - tests/：构建与异常用例。
 
 ## 命令

@@ -1,9 +1,0 @@
-{
-  "title": "Deepleaper · 品牌模板虚构示例",
-  "design": "../../designs/deepleaper-dark/design.md",
-  "pages": [
-    {"id": "brand-cover", "file": "cover.html", "layout": "cover", "notes": "仅用于演示品牌模板，不是真实客户或业务成果。"},
-    {"id": "brand-flow", "file": "flow.html", "layout": "flow", "notes": "先确认 HTML，再按需导出 PPTX。"},
-    {"id": "brand-boundary", "file": "boundary.html", "layout": "boundary", "notes": "必须交付转换报告，局部图片不等于可编辑矢量。"}
-  ]
-}
